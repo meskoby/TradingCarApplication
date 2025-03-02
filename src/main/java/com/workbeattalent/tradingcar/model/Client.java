@@ -13,7 +13,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
+//@NoArgsConstructor
 @AllArgsConstructor
 public class Client {
     @Id
@@ -25,6 +25,9 @@ public class Client {
     private String email;
     private Gender gender;
     //List<Operation> operations = new ArrayList<>();
+
+    public Client() {
+    }
 
     public Client(String firstname, String lastname, String email, Gender gender) {
         this.firstname = firstname;
