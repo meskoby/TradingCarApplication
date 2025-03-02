@@ -3,6 +3,8 @@ package com.workbeattalent.tradingcar.controller;
 import com.workbeattalent.tradingcar.dto.ClientRequest;
 import com.workbeattalent.tradingcar.model.Client;
 import com.workbeattalent.tradingcar.service.ClientService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,14 +20,13 @@ public class ClientController {
     }
 
     @PostMapping
-    public Client createClient(@RequestBody ClientRequest request) {
-        Client client = this.service.create(request);
-        return client;
+    public ResponseEntity<Client> createClient(@RequestBody ClientRequest request) {
+        return new ResponseEntity<>(this.service.create(request), HttpStatus.CREATED);
     }
 
     @GetMapping
-    public List<Client> getClients() {
-        return this.service.getAll();
+    public ResponseEntity<List<Client>> getClients() {
+        return new ResponseEntity<>(this.service.getAll(), HttpStatus.OK);
     }
 
 }
